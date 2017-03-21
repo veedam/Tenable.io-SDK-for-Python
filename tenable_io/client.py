@@ -7,6 +7,8 @@ from time import sleep
 from tenable_io.config import TenableIOConfig
 from tenable_io.exceptions import TenableIOApiException, TenableIORetryableApiException
 from tenable_io.api.base import BaseRequest
+from tenable_io.api.agents import AgentsApi
+from tenable_io.api.agent_groups import AgentGroupsApi
 from tenable_io.api.editor import EditorApi
 from tenable_io.api.exclusions import ExclusionApi
 from tenable_io.api.file import FileApi
@@ -59,6 +61,8 @@ class TenableIOClient(object):
         """
         Initialize all api.
         """
+	self.agents_api = AgentsApi(self)
+	self.agent_groups_api = AgentGroupsApi(self)
         self.editor_api = EditorApi(self)
         self.exclusions_api = ExclusionApi(self)
         self.file_api = FileApi(self)
